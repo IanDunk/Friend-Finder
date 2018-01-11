@@ -22,31 +22,27 @@ module.exports = function(app) {
   // API POST Requests and Friend Finding Logic
   // CHANGE TO SET TO RANDOM PICK IF TWO PEOPLE ARE EQUALLY AS LIKELY TO BE FRIENDS ****************************
   app.post("/api/friends", function(req, res) { 
-    var friendFound = ["", 50, 0];
+    var friendFound = [50, 0];
     
     for(var j = 0; j < friendsData.length; j++) { // LOGIC MESSED UP ACTUALLY!!!
         // higher number is worse link to friendship
         var unlikelyPoints = 0;
         // WORKING
         for(var k = 0; k < 10; k++) {
-            unlikelyPoints += Math.abs(parseFloat(friendsData[j].scores[k]) - parseFloat(req.body["scores[]"][k]));
+            unlikelyPoints += Math.abs(parseFloat(friendsData[j].scores[k]) - parseFloat(req.body.scores[k])); // changed "scores[]"
         }
         // WORKING
-        if(unlikelyPoints < friendFound[1]) {
-            friendFound[0] = friendsData[j].name; // DONT NEED
-            friendFound[1] = unlikelyPoints;
-            friendFound[2] = j;
+        if(unlikelyPoints < friendFound[0]) {
+            //friendFound[0] = friendsData[j].name; // DONT NEED
+            friendFound[0] = unlikelyPoints;
+            friendFound[1] = j;
         }
         console.log(unlikelyPoints); // TEST
     }
 
-
-    // NEEDS FIXING
-    // ADDING TO FRIENDS LIST -- ADD A VALIDATION
-    // friendsData.push(req.body); works one time?
-
-
-    res.json(friendsData[friendFound[2]]);
+    // ADDING TO FRIENDS LIST -- ADD A VALIDATION !!!!!!!!!!!
+    friendsData.push(req.body);
+    res.json(friendsData[friendFound[1]]);
   });
 
 
