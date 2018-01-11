@@ -8,7 +8,7 @@ var friends = [
   {
     "name": "Fred",
     "photo": "http://i0.kym-cdn.com/entries/icons/original/000/007/329/qqAQM.png",
-    "scores": ["2", "4", "3", "2", "1", "4", "2", "5", "1" , "5"]
+    "scores": ["2", "4", "3", "2", "1", "1", "2", "5", "1" , "5"]
   },
   {
     "name": "ET",

@@ -9,27 +9,49 @@ module.exports = function(app) {
     res.json(friendsData);
   });
 
+
+
+
+
+
+
+
+
+  // NEEDS FIXING
+
   // API POST Requests and Friend Finding Logic
   // CHANGE TO SET TO RANDOM PICK IF TWO PEOPLE ARE EQUALLY AS LIKELY TO BE FRIENDS ****************************
   app.post("/api/friends", function(req, res) { 
-    var friendFound = ["", 0, 0];
+    var friendFound = ["", 50, 0];
     
-    for(var j = 0; j < friendsData.length; j++) {
+    for(var j = 0; j < friendsData.length; j++) { // LOGIC MESSED UP ACTUALLY!!!
         // higher number is worse link to friendship
         var unlikelyPoints = 0;
+        // WORKING
         for(var k = 0; k < 10; k++) {
-            unlikelyPoints += Math.floor(parseFloat(friendsData[j].scores[k]) - parseFloat(req.body["scores[]"][k]));
+            unlikelyPoints += Math.abs(parseFloat(friendsData[j].scores[k]) - parseFloat(req.body["scores[]"][k]));
         }
+        // WORKING
         if(unlikelyPoints < friendFound[1]) {
-            friendFound[0] = friendsData[j].name;
+            friendFound[0] = friendsData[j].name; // DONT NEED
             friendFound[1] = unlikelyPoints;
             friendFound[2] = j;
         }
-        //console.log(unlikelyPoints); // TEST
+        console.log(unlikelyPoints); // TEST
     }
 
     res.json(friendsData[friendFound[2]]);
   });
+
+
+
+
+
+
+
+
+
+
 
 
 
