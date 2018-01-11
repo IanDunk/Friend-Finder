@@ -40,6 +40,12 @@ module.exports = function(app) {
         console.log(unlikelyPoints); // TEST
     }
 
+
+    // NEEDS FIXING
+    // ADDING TO FRIENDS LIST -- ADD A VALIDATION
+    // friendsData.push(req.body); works one time?
+
+
     res.json(friendsData[friendFound[2]]);
   });
 
