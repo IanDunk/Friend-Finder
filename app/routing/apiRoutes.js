@@ -1,29 +1,23 @@
 // LOAD DATA
-// ===============================================================================
-
 var friendsData = require("../data/friends");
 
 // ROUTING
-// ===============================================================================
-
 module.exports = function(app) {
   
-    // API GET Requests
+  // API GET Requests
   app.get("/api/friends", function(req, res) {
     res.json(friendsData);
   });
 
-
-
-
-  // API POST Requests WORKING
-  // FRIEND FINDING LOGIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // API POST Requests and Friend Finding Logic
+  // CHANGE TO SET TO RANDOM PICK IF TWO PEOPLE ARE EQUALLY AS LIKELY TO BE FRIENDS ****************************
   app.post("/api/friends", function(req, res) { 
     var friendFound = ["", 0, 0];
     
     for(var j = 0; j < friendsData.length; j++) {
-        var unlikelyPoints = 0; // higher number is worse link to friendship
-        for(var k = 0; k < 10; k++) { //Math.floor
+        // higher number is worse link to friendship
+        var unlikelyPoints = 0;
+        for(var k = 0; k < 10; k++) {
             unlikelyPoints += Math.floor(parseFloat(friendsData[j].scores[k]) - parseFloat(req.body["scores[]"][k]));
         }
         if(unlikelyPoints < friendFound[1]) {
@@ -33,8 +27,7 @@ module.exports = function(app) {
         }
         //console.log(unlikelyPoints); // TEST
     }
-    
-    //console.log(friendsData[friendFound[2]]); // TEST
+
     res.json(friendsData[friendFound[2]]);
   });
 
@@ -57,3 +50,4 @@ module.exports = function(app) {
 
 
 // COMPLETE ******************
+// JUST NEED TO ADD NEW FRIEND WHEN BUTTON CLICKED

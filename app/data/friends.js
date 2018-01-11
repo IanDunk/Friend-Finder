@@ -1,5 +1,4 @@
 // Friends (DATA)
-// =============================================================
 var friends = [
   {
     "name": "Yoda",
@@ -9,18 +8,25 @@ var friends = [
   {
     "name": "Fred",
     "photo": "http://i0.kym-cdn.com/entries/icons/original/000/007/329/qqAQM.png",
-    "scores": ["5", "3", "5", "3", "2", "4", "1", "4", "5" , "5"]
+    "scores": ["2", "4", "3", "2", "1", "4", "2", "5", "1" , "5"]
   },
   {
     "name": "ET",
     "photo": "https://peopledotcom.files.wordpress.com/2016/08/et-600x450.jpg",
-    "scores": ["5", "3", "5", "3", "2", "4", "1", "4", "5" , "5"]
+    "scores": ["5", "3", "2", "5", "2", "1", "1", "4", "2" , "3"]
   }
 ];
 
+// ROUTING
 module.exports = friends;
 
-// MAKE SURE THAT IF SOMEONE HAS EQUAL SCORES, TWO PEOPLE DON'T SHOW UP
+
+
+
+
+
+
+
 // CHANGE SCORES AFTER TEST
 
 // Pokemon Theme!?
