@@ -13,11 +13,12 @@ module.exports = function(app) {
     res.json(friendsData);
   });
 
-  // API POST Requests
-  // FRIEND FINDING LOGIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  app.post("/api/friends", function(req, res) {
 
-    
+
+
+  // API POST Requests WORKING
+  // FRIEND FINDING LOGIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  app.post("/api/friends", function(req, res) { 
     var friendFound = ["", 0, 0];
     
     for(var j = 0; j < friendsData.length; j++) {
@@ -30,12 +31,13 @@ module.exports = function(app) {
             friendFound[1] = unlikelyPoints;
             friendFound[2] = j;
         }
-        console.log(unlikelyPoints); // TEST
+        //console.log(unlikelyPoints); // TEST
     }
     
-    console.log(friendsData[friendFound[2]]); // TEST
+    //console.log(friendsData[friendFound[2]]); // TEST
     res.json(friendsData[friendFound[2]]);
   });
+
 
 
 
@@ -54,4 +56,4 @@ module.exports = function(app) {
 
 
 
-// Complete, just need to change functionality
+// COMPLETE ******************

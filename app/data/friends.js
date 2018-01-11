@@ -29,3 +29,13 @@ module.exports = friends;
 
 
 // COMPLETE ******************
+
+
+
+// pokemon theme
+// strength 
+  //-- low = 1st evolution 
+  //-- med = 2nd evolution 
+  //-- high = 3rd evolution
+  //-- no evolution okay go straight to low unless legendary?
+// 
