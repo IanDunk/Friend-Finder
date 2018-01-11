@@ -24,7 +24,7 @@ module.exports = function(app) {
   app.post("/api/friends", function(req, res) { 
     var friendFound = [50, 0];
     
-    for(var j = 0; j < friendsData.length; j++) { // LOGIC MESSED UP ACTUALLY!!!
+    for(var j = 0; j < friendsData.length; j++) {
         // higher number is worse link to friendship
         var unlikelyPoints = 0;
         // WORKING
@@ -50,14 +50,6 @@ module.exports = function(app) {
 
 
 
-
-
-
-
-
-
-
-
   // ---------------------------------------------------------------------------
   // I added this below code so you could clear out the table while working with the functionality.
   // Don"t worry about it!
@@ -70,8 +62,3 @@ module.exports = function(app) {
     console.log(tableData);
   });
 };
-
-
-
-// COMPLETE ******************
-// JUST NEED TO ADD NEW FRIEND WHEN BUTTON CLICKED
