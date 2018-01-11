@@ -18,7 +18,14 @@ var friends = [
   }
 ];
 
+module.exports = friends;
+
 // MAKE SURE THAT IF SOMEONE HAS EQUAL SCORES, TWO PEOPLE DON'T SHOW UP
 // CHANGE SCORES AFTER TEST
 
 // Pokemon Theme!?
+
+
+
+
+// COMPLETE ******************
