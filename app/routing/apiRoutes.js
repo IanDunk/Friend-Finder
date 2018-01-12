@@ -9,56 +9,51 @@ module.exports = function(app) {
     res.json(friendsData);
   });
 
-
-
-
-
-
-
-
-
-  // NEEDS FIXING
-
   // API POST Requests and Friend Finding Logic
-  // CHANGE TO SET TO RANDOM PICK IF TWO PEOPLE ARE EQUALLY AS LIKELY TO BE FRIENDS ****************************
+  // ADD A VALIDATION IN FUTURE...
   app.post("/api/friends", function(req, res) { 
+    
+    // Most related friend placeholder
     var friendFound = [50, 0];
     
+    // cycles through each friend and compares it to the user input object
     for(var j = 0; j < friendsData.length; j++) {
+        
         // higher number is worse link to friendship
         var unlikelyPoints = 0;
-        // WORKING
-        for(var k = 0; k < 10; k++) {
+        
+        // Calculates how many points the user has against the friend they're being compared to
+        for(var k = 0; k < req.body.scores.length; k++) {
             unlikelyPoints += Math.abs(parseFloat(friendsData[j].scores[k]) - parseFloat(req.body.scores[k])); // changed "scores[]"
         }
-        // WORKING
-        if(unlikelyPoints < friendFound[0]) {
-            //friendFound[0] = friendsData[j].name; // DONT NEED
-            friendFound[0] = unlikelyPoints;
-            friendFound[1] = j;
+        
+        // If equal matches, pick a random one to keep
+          //  Unfortunatly this method will eventually lose the friends from the top
+          //  due to too many chances being 'rolled', especially if this program is used by 
+          //  millions of people with many having the same question answers.
+          //  Replace in the future. Ok on small scale. 
+        if(unlikelyPoints <= friendFound[0]) {
+            if(unlikelyPoints === friendFound[0]) {
+              if(Math.random() < 0.5) {
+                friendFound[0] = unlikelyPoints;
+                friendFound[1] = j;
+              }
+            } else {
+              friendFound[0] = unlikelyPoints;
+              friendFound[1] = j;
+            }
         }
-        console.log(unlikelyPoints); // TEST
+        
+        // TEST allows user to see point differences for each friend via server-side console
+        console.log(friendsData[j].name + "'s unlikely points: " + unlikelyPoints);
     }
 
-    // ADDING TO FRIENDS LIST -- ADD A VALIDATION !!!!!!!!!!!
+    // TEST just separating the different logs and displaying winning match
+    console.log("\n" + friendsData[friendFound[1]].name + "\n");
+
+    // Adding to friends list and returning the most likely friend match object
     friendsData.push(req.body);
     res.json(friendsData[friendFound[1]]);
   });
 
-
-
-
-
-
-  // ---------------------------------------------------------------------------
-  // I added this below code so you could clear out the table while working with the functionality.
-  // Don"t worry about it!
-
-  app.post("/api/clear", function() {
-    // Empty out the arrays of data
-    tableData = [];
-    waitListData = [];
-
-    console.log(tableData);
-  });
 };

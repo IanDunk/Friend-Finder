@@ -211,6 +211,7 @@
   </div>
   <script>
 
+    // Survey submission
     $("#submit").on("click", function (event) {
       event.preventDefault();
 
@@ -257,10 +258,11 @@
         // AJAX post the data to the friends API.  RETRIEVING LOGIC!!!
         $.post("/api/friends", userData, function (data) {
 
-          // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+          // Setting match-name and match-img id tags with AJAX post result.
           $("#match-name").text(data.name);
           $("#match-img").attr("src", data.photo);
 
+          // TEST logging best matched user to user-side console
           console.log(data.name);
 
           // Show the modal with the best match

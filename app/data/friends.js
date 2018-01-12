@@ -22,26 +22,5 @@ module.exports = friends;
 
 
 
-
-
-
-
-
-// CHANGE SCORES AFTER TEST
-
-// Pokemon Theme!?
-
-
-
-
-// COMPLETE ******************
-
-
-
-// pokemon theme
-// strength 
-  //-- low = 1st evolution 
-  //-- med = 2nd evolution 
-  //-- high = 3rd evolution
-  //-- no evolution okay go straight to low unless legendary?
-// 
+// Pokemon Theme in future?
+// https://pokeapi.co/
