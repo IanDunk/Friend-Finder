@@ -10,8 +10,10 @@ module.exports = function(app) {
   });
 
   // API POST Requests and Friend Finding Logic
-  // ADD A VALIDATION IN FUTURE...
   app.post("/api/friends", function(req, res) { 
+
+    // ADD A VALIDATION HERE IN THE FUTURE...
+    // For cases when a duplicate is trying to be made.
     
     // Most related friend placeholder
     var friendFound = [50, 0];
